@@ -1,4 +1,4 @@
-React frontend for [QUOI](https://github.com/kpatenio/QUOI). Currently a WIP.
+**React frontend for [QUOI](https://github.com/kpatenio/QUOI). Currently a WIP. **
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
