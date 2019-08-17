@@ -12,6 +12,9 @@ Currently in use:
 - TypeScript
 - [Axios](https://github.com/axios/axios)
 
+## Server and API Calls
+HTTP calls are made via Axios to a Flask server hosted in [quoi-flask-backend](https://github.com/kpatenio/quoi-flask-backend) (which, at the moment, can only be run locally). The Flask server calls the Collins API and then returns any retrieved data back to the React app.
+
 ## Available Scripts (from create-react-app)
 In the project directory, you can run:
 
