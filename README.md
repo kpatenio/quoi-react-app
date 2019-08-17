@@ -1,4 +1,9 @@
-**React frontend for [QUOI](https://github.com/kpatenio/QUOI). Currently a WIP.**
+# QUOI
+The app to use when you ask yourself « Quoi » !
+
+## About
+QUOI is a work-in-progress French dictionary React app that utilizes 
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
