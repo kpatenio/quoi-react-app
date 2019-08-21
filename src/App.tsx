@@ -9,6 +9,8 @@ import temp from './mockedAssets/en-fr/temp';
 // TODO - use TypeScript interfaces!
 // TODO - use SCSS and given classnames to change styling
 
+// TODO - styling remove .cit with #{word_id} and children "&nbsp"?
+
 const App: React.FC = () => {
   const content = temp.entryContent // temporary content!
   // TODO - change to proper state
