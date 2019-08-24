@@ -4,7 +4,7 @@ import './App.css';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
 // import parse from 'html-react-parser'; // if using this, reinstall package
-import temp from './mockedAssets/en-fr/temp';
+import entry from './mockedAssets/en-fr/entry';
 
 // TODO - use TypeScript interfaces!
 // TODO - use SCSS and given classnames to change styling
@@ -12,17 +12,28 @@ import temp from './mockedAssets/en-fr/temp';
 // TODO - styling remove .cit with #{word_id} and children "&nbsp"?
 
 const App: React.FC = () => {
-  const content = temp.entryContent // temporary content!
+  const content = entry.entryContent // temporary content!
   // TODO - change to proper state
-  const [testState, setTestState] = useState('');
+  const [testState, setTestState] = useState('This is the index page!');
+  const [dictLanguage, setDictLanguage] = useState('english-french');
   useEffect(() => {
-    // axios.get('http://127.0.0.1:5000/board')
-    // .then((response) => {
-    //   console.log(response);
-    //   setTestState(response.data.entryContent); // TODO - new branch
-    //   // TODO - errorCode and errorMessage
-    // });
-    setTestState(content);
+  //     axios.get('https:127.0.0.1:5000/', {
+  //       headers: { // headers to be read by flask app only
+  //         dictToggle: dictToggle
+  //       }
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //       setTestState(response.data.entryContent); // TODO - new branch
+  //     });
+    axios.get('http://127.0.0.1:5000', {
+      headers: {
+        'dict-language': dictLanguage
+      }
+    }).then((response) => {
+      console.log(response);
+      setTestState(response.data); 
+    })
   });
   const sanitizer = DOMPurify.sanitize; // TODO - use more of this
 // TODO searchbar - https://dev.to/sage911/how-to-write-a-search-component-with-suggestions-in-react-d20
