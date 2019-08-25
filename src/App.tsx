@@ -15,7 +15,7 @@ import entry from './mockedAssets/en-fr/entry';
 const App: React.FC = () => {
   const content: string = entry.entryContent // temporary content!
   // TODO - change to proper state
-  const [testState, setTestState] = useState('This is the index page!');
+  const [testState, setTestState] = useState('Welcome to QUOI!');
   
   // To be sent to and used by API.
   // TODO - use i18n instead of dictLanguage for button text
@@ -28,35 +28,44 @@ const App: React.FC = () => {
       // TODO - use i18n instead of dictLanguage for button text
     // TODO - for toggles, instead of comparing text, maybe we can instead compare ids.
     // ex. ids can be 'en-fr', 'fr-en'
-    if (dictLanguage === "english-french") {
-      setDictLanguage("french-english");
+    if (dictLanguage === 'english-french') {
+      setDictLanguage('french-english');
     }
-    else if (dictLanguage === "french-english") {
-      setDictLanguage("english-french");
+    else if (dictLanguage === 'french-english') {
+      setDictLanguage('english-french');
     }
     else {
-      setDictLanguage("what lol");
+      setDictLanguage('what lol');
     }
   };
 
   const handleClickSearch = (word: string) => {
-    console.log("clicked search!");
-    axios.get(`http://127.0.0.1:5000/${word}`, {
-      headers: {
-        'dict-language': dictLanguage
-      }
-    })
+    // /*
+    //   Check if there is any non-whitespace character.
+    //   Sources:
+    //     https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+    //     https://stackoverflow.com/questions/2031085/how-can-i-check-if-string-contains-characters-whitespace-not-just-whitespace
+    // */
+    if (word === null || word.trim() === "") {
+      setTestState('Please enter a word.')
+    } else {
+      getContent(word);
+    }
+  }
+
+  const getContent = (word: string) => {
+    axios.get(`http://127.0.0.1:5000/${dictLanguage}/${word}`)
     .then((response) => {
       console.log(response);
-      setTestState(response.data.entryContent); 
-    })
-    .catch((error, response=undefined) => {
-      if (response !== undefined) { // no search results
-        setTestState(response.errorMessage);
-      }
+      if (response.data.hasOwnProperty("errorMessage")) {
+        setTestState(`No results available for '${word}' &#128542`);
+      } else {
+        setTestState(response.data.entryContent);
+      }})
+    .catch(() => {
       // TODO - make error call for actual non-mocked calls
-      // setTestState("currently offline!");
-      setTestState("Sorry! Server is currently offline. Please try again later.");
+      // TODO - this catch is called if 1. server is offline OR 2. 
+      setTestState(`The server is currently offline. &#128542 Please try again later.`);
     })
   }
 
