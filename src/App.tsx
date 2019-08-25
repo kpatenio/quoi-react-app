@@ -9,7 +9,6 @@ import entry from './mockedAssets/en-fr/entry';
 
 // TODO - use TypeScript interfaces!
 // TODO - use SCSS and given classnames to change styling
-
 // TODO - styling remove .cit with #{word_id} and children "&nbsp"?
 
 const App: React.FC = () => {
@@ -40,12 +39,6 @@ const App: React.FC = () => {
   };
 
   const handleClickSearch = (word: string) => {
-    // /*
-    //   Check if there is any non-whitespace character.
-    //   Sources:
-    //     https://www.w3schools.com/jsref/jsref_obj_regexp.asp
-    //     https://stackoverflow.com/questions/2031085/how-can-i-check-if-string-contains-characters-whitespace-not-just-whitespace
-    // */
     if (word === null || word.trim() === "") {
       setTestState('Please enter a word.')
     } else {
@@ -57,11 +50,13 @@ const App: React.FC = () => {
     axios.get(`http://127.0.0.1:5000/${dictLanguage}/${word}`)
     .then((response) => {
       console.log(response);
-      if (response.data.hasOwnProperty("errorMessage")) {
-        setTestState(`No results available for '${word}' &#128542`);
-      } else {
-        setTestState(response.data.entryContent);
-      }})
+        if (!response.data.hasOwnProperty('suggestions')) {
+          setTestState(response.data.entryContent);
+        } else {
+          // TODO - use a new component or tag to display list of suggestions
+          setTestState(`No results available for '${word}' &#128542 \n Did you mean ${response.data.suggestions} ?`);
+        }
+    })
     .catch(() => {
       // TODO - make error call for actual non-mocked calls
       // TODO - this catch is called if 1. server is offline OR 2. 
