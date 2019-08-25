@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import {Button, Icon, Tooltip} from "antd";
+import {Button, Icon, Tooltip, Input} from "antd";
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
@@ -16,8 +16,11 @@ const App: React.FC = () => {
   const content: string = entry.entryContent // temporary content!
   // TODO - change to proper state
   const [testState, setTestState] = useState('This is the index page!');
+  
+  // To be sent to and used by API.
+  // TODO - use i18n instead of dictLanguage for button text
+  const [dictLanguage, setDictLanguage] = useState('english-french');
 
-  const [dictLanguage, setDictLanguage] = useState('English-French');
   // useEffect(() => {
   //   axios.get('http://127.0.0.1:5000', {
   //     headers: {
@@ -32,9 +35,24 @@ const App: React.FC = () => {
 // TODO searchbar - https://dev.to/sage911/how-to-write-a-search-component-with-suggestions-in-react-d20
 
 const handleClickTest = () => {
-  setDictLanguage('French-English');
+    // TODO - use i18n instead of dictLanguage for button text
+  console.log('clicked test!');
+  if (dictLanguage === "english-french") {
+    setDictLanguage("french-english");
+  }
+  else if (dictLanguage === "french-english") {
+    setDictLanguage("english-french");
+  }
+  else {
+    setDictLanguage("what lol");
+  }
 };
 
+const handleClickSearch = () => {
+  console.log("clicked search!")
+}
+
+const {Search} = Input;
 return (
     <div className="App">
       <header className="App-header">
@@ -45,6 +63,11 @@ return (
             <Icon type="swap" />
           </Button>
         </Tooltip>
+        <Search
+          className="searchbar"
+          placeholder="Search for a word" 
+          onSearch={handleClickSearch} 
+        />
 
 
         <div dangerouslySetInnerHTML={{__html: sanitizer(testState)}}/>
