@@ -15,16 +15,15 @@ const App: React.FC = () => {
   const content: string = entry.entryContent // temporary content!
   // TODO - change to proper state
   const [testState, setTestState] = useState('Welcome to QUOI!');
-  
+
   // To be sent to and used by API.
   // TODO - use i18n instead of dictLanguage for button text
   const [dictLanguage, setDictLanguage] = useState('english-french');
 
-
   const sanitizer = DOMPurify.sanitize; // TODO - use more of this
 
   const handleClickTest = () => {
-      // TODO - use i18n instead of dictLanguage for button text
+    // TODO - use i18n instead of dictLanguage for button text
     // TODO - for toggles, instead of comparing text, maybe we can instead compare ids.
     // ex. ids can be 'en-fr', 'fr-en'
     if (dictLanguage === 'english-french') {
