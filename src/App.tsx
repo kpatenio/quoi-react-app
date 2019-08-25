@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Button, Icon, Tooltip, Input} from "antd";
 import logo from './logo.svg';
 import './App.css';
@@ -26,7 +26,6 @@ const App: React.FC = () => {
 
   const handleClickTest = () => {
       // TODO - use i18n instead of dictLanguage for button text
-    console.log('clicked test!');
     // TODO - for toggles, instead of comparing text, maybe we can instead compare ids.
     // ex. ids can be 'en-fr', 'fr-en'
     if (dictLanguage === "english-french") {
@@ -40,18 +39,24 @@ const App: React.FC = () => {
     }
   };
 
-  const handleClickSearch = () => {
+  const handleClickSearch = (word: string) => {
     console.log("clicked search!");
-    axios.get('http://127.0.0.1:5000', {
+    axios.get(`http://127.0.0.1:5000/${word}`, {
       headers: {
         'dict-language': dictLanguage
       }
-    }).then((response) => {
+    })
+    .then((response) => {
       console.log(response);
-      setTestState(response.data); 
-    }).catch(() => {
+      setTestState(response.data.entryContent); 
+    })
+    .catch((error, response=undefined) => {
+      if (response !== undefined) { // no search results
+        setTestState(response.errorMessage);
+      }
       // TODO - make error call for actual non-mocked calls
-      setTestState("currently offline!");
+      // setTestState("currently offline!");
+      setTestState("Sorry! Server is currently offline. Please try again later.");
     })
   }
 
