@@ -71,7 +71,7 @@ const App: React.FC = () => {
           <p className="second">How are you?</p>
           <img src={logo} className="App-logo" alt="logo" />
           <Tooltip placement="topLeft" title="Click here to swap languages!">
-            <Button onClick={handleClickTest} type="primary">
+            <Button data-testid="toggle" onClick={handleClickTest} type="primary">
               {dictLanguage}
               <Icon type="swap" />
             </Button>
