@@ -1,0 +1,35 @@
+// Import LESS colour variables from antd.
+// To see the full list of colours: https://ant.design/docs/spec/colors#Base-Color-Palettes
+@import '~antd/es/style/themes/default.less';
+
+@my-var: green;
+
+.testclass {
+    background-color: black;
+}
+
+.ant-btn {
+    &.ant-btn-primary {
+        background-color: @volcano-5;
+        border-color: @volcano-5;
+        &:hover {
+            background-color: @cyan-3;
+        }
+    }
+}
+
+
+.ant-input {
+    background-color: @magenta-3;
+}
+.ant-input-suffix {
+    border: black solid;
+}
+
+div {
+    p {
+        &.first {
+            background-color:@my-var;
+        }
+    }
+}

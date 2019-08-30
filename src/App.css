@@ -1,5 +1,6 @@
-@import '~antd/dist/antd.css';
-
+.ant-btn.ant-btn-primary {
+  color: red;
+}
 
 .App {
   text-align: center;

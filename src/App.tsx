@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import {Button, Icon, Tooltip, Input} from "antd";
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+import './App.less';
 import axios from 'axios';
 import DOMPurify from 'dompurify';
 // import parse from 'html-react-parser'; // if using this, reinstall package
@@ -28,11 +29,9 @@ const App: React.FC = () => {
     // ex. ids can be 'en-fr', 'fr-en'
     if (dictLanguage === 'english-french') {
       setDictLanguage('french-english');
-    }
-    else if (dictLanguage === 'french-english') {
+    } else if (dictLanguage === 'french-english') {
       setDictLanguage('english-french');
-    }
-    else {
+    } else {
       setDictLanguage('what lol');
     }
   };
@@ -58,7 +57,8 @@ const App: React.FC = () => {
     })
     .catch(() => {
       // TODO - make error call for actual non-mocked calls
-      // TODO - this catch is called if 1. server is offline OR 2. 
+      // TODO - this catch is called if 1. server is offline OR 2.
+      // TODO - say "unable to search for <word> at this time" instead of offline server
       setTestState(`The server is currently offline. &#128542 Please try again later.`);
     })
   }
@@ -67,6 +67,8 @@ const App: React.FC = () => {
   return (
       <div className="App">
         <header className="App-header">
+          <p className="first">Hello there!</p>
+          <p className="second">How are you?</p>
           <img src={logo} className="App-logo" alt="logo" />
           <Tooltip placement="topLeft" title="Click here to swap languages!">
             <Button onClick={handleClickTest} type="primary">
