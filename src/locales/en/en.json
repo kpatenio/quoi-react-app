@@ -1,0 +1,10 @@
+{
+    "translation": {
+        "languageToggle": "FR",
+        "searchbarPlaceholder": "Search for a word",
+        "toggleLabel_en-fr": "English-French",
+        "toggleLabel_fr-en": "French-English",
+        "tooltipTitle": "Click here to swap languages!",
+        "welcome": "Welcome to QUOI!"
+    }
+}
