@@ -17,18 +17,19 @@ import entry from './mockedAssets/en-fr/entry';
 // TODO - styling remove .cit with #{word_id} and children "&nbsp"?
 
 const App: React.FC = () => {
-  const content: string = entry.entryContent // temporary content!
-  const sadFaceEmoji = '&#128542'
   const {t, i18n} = useTranslation();
-  // TODO - change to proper state
-  const [testState, setTestState] = useState();
+  const {Search} = Input;
+  // const content: string = entry.entryContent // temporary content!
+  const sadFaceEmoji: string = '&#128542'
+  const sanitizer = DOMPurify.sanitize;
+  
+  const [testState, setTestState] = useState<string>('');
 
-  const [dictCode, setDictCode] = useState('english-french'); // To be sent to and used by API.
-  const [toggleText, setToggleText] = useState(t('toggleLabel_en-fr')); 
+  const [dictCode, setDictCode] = useState<string>('english-french'); // To be sent to and used by API.
+  const [toggleText, setToggleText] = useState<string>(t('toggleLabel_en-fr')); 
 
-  const sanitizer = DOMPurify.sanitize; // TODO - use more of this
 
-  const getContent = (word: string) => {
+  const getContent = (word: string | null) => {
     axios.get(`http://127.0.0.1:5000/${dictCode}/${word}`)
     .then((response) => {
       console.log(response);
@@ -62,7 +63,7 @@ const App: React.FC = () => {
     }
   }
 
-  const handleClickSearch = (word: string) => {
+  const handleClickSearch = (word: string | null) => {
     if (word === null || word.trim() === "") {
       setTestState('Please enter a word.')
     } else {
@@ -87,7 +88,6 @@ const App: React.FC = () => {
     }
 }
 
-  const {Search} = Input;
 
   /* TODO
     Note that antd's ConfigProvider has locale support with it's own translated placeholders. Note that these can usually still be replaced via placeholder prop.
@@ -98,7 +98,7 @@ const App: React.FC = () => {
         <Button data-testid="language" onClick={handleChangeLanguage}>
           {t('languageToggle')}
         </Button>
-        <header className="App-header">
+        {/* <header className="App-header"> */}
         <h1>
           {t('welcome')}
         </h1>
@@ -124,7 +124,7 @@ const App: React.FC = () => {
           >
             Learn React
           </a>
-        </header>
+        {/* </header> */}
       </div>
     );
 }

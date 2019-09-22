@@ -1,10 +1,11 @@
 {
     "translation": {
+        "enterWord": "Il faut saisir un mot.",
         "languageToggle": "EN",
         "searchbarPlaceholder": "Rechercher un mot",
         "toggleLabel_en-fr": "Anglais-Français",
         "toggleLabel_fr-en": "Français-Anglais",
-        "tooltipTitle": "Cliquez ici pour changer la langue !",
-        "welcome": "Bienvenue sur QUOI !"
+        "tooltipTitle": "Cliquez ici pour changer la langue du dictionnaire !",
+        "welcome": "Bienvenue dans QUOI !"
     }
 }

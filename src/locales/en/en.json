@@ -1,10 +1,11 @@
 {
     "translation": {
+        "enterWord": "Please enter a word.",
         "languageToggle": "FR",
         "searchbarPlaceholder": "Search for a word",
         "toggleLabel_en-fr": "English-French",
         "toggleLabel_fr-en": "French-English",
-        "tooltipTitle": "Click here to swap languages!",
+        "tooltipTitle": "Click here to swap the dictionary language!",
         "welcome": "Welcome to QUOI!"
     }
 }
