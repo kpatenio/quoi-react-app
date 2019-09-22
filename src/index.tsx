@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './i18n.js'; // wrap i18next
-import './index.css'; // TODO - change to LESS
+// import './index.css'; // TODO - change to LESS
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
