@@ -65,7 +65,7 @@ const App: React.FC = () => {
 
   const handleClickSearch = (word: string | null) => {
     if (word === null || word.trim() === "") {
-      setTestState('Please enter a word.')
+      setTestState(t('enterWord'))
     } else {
       getContent(word);
     }
@@ -95,13 +95,13 @@ const App: React.FC = () => {
   */
   return (
       <div className="App">
+        <header>
         <Button data-testid="language" onClick={handleChangeLanguage}>
           {t('languageToggle')}
         </Button>
-        {/* <header className="App-header"> */}
-        <h1>
-          {t('welcome')}
-        </h1>
+        </header>
+        <h1 className="test"> {t('title')} </h1>
+        <h2> {t('slogan')} </h2>
           {/* <img src={logo} className="App-logo" alt="logo" /> */}
           <Tooltip placement="topLeft" title={t('tooltipTitle')}>
             <Button data-testid="toggle" onClick={handleClickToggle} type="primary">

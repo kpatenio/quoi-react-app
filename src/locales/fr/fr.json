@@ -1,11 +1,12 @@
 {
     "translation": {
-        "enterWord": "Il faut saisir un mot.",
+        "enterWord": "Veuillez saisir un mot.",
         "languageToggle": "EN",
         "searchbarPlaceholder": "Rechercher un mot",
+        "slogan": "L'appli à utiliser lorsque vous vous demandez « Quoi ? »",
+        "title": "QUOI",
         "toggleLabel_en-fr": "Anglais-Français",
         "toggleLabel_fr-en": "Français-Anglais",
-        "tooltipTitle": "Cliquez ici pour changer la langue du dictionnaire !",
-        "welcome": "Bienvenue dans QUOI !"
+        "tooltipTitle": "Cliquez ici pour changer la langue du dictionnaire !"
     }
 }
