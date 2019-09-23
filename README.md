@@ -27,6 +27,12 @@ Not needed to run the app, but required for debugging and additional functionali
 ## Server and API Calls
 HTTP calls are made via Axios to a Flask server hosted in [quoi-flask-backend](https://github.com/kpatenio/quoi-flask-backend) (which, at the moment, can only be run locally). The Flask server calls the Collins API and then returns any retrieved data back to the React app.
 
+## Styling and Components
+All the amazing components used were made by the amazing `antd` developers! The LESS preprocessor was used to customize antd components; note that with `less-loader`, there is no need to manually compile `.less` files. All it takes is a simple `.less` file import!
+
+### My styling disappeared!
+If, for any reason, all `.less` styles disappear from the page, try rerunning the app using `npm start`.
+
 ## Available Scripts (from create-react-app)
 In the project directory, you can run:
 
