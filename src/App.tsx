@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {Button, Icon, Tooltip, Input} from "antd";
+import {Layout, Button, Icon, Tooltip, Input} from "antd";
 // import logo from './logo.svg';
 
-import {I18nextProvider, useTranslation} from 'react-i18next';
+import {I18nextProvider, useTranslation, Trans} from 'react-i18next';
 import i18next from 'i18next';
 
 // import './App.css';
@@ -28,6 +28,7 @@ const App: React.FC = () => {
   const [dictCode, setDictCode] = useState<string>('english-french'); // To be sent to and used by API.
   const [toggleText, setToggleText] = useState<string>(t('toggleLabel_en-fr')); 
 
+  const title = '« quoi »';
 
   const getContent = (word: string | null) => {
     axios.get(`http://127.0.0.1:5000/${dictCode}/${word}`)
@@ -93,40 +94,60 @@ const App: React.FC = () => {
     Note that antd's ConfigProvider has locale support with it's own translated placeholders. Note that these can usually still be replaced via placeholder prop.
     This depends on the component. For now, let's use i18next! After implementing all translations, we can use ConfigProvider 
   */
+ const { Header, Content, Footer } = Layout;
   return (
-      <div className="App">
-        <header>
-        <Button data-testid="language" onClick={handleChangeLanguage}>
-          {t('languageToggle')}
+    <div className="App">
+      <Header className="header">
+        {/*TODO - determine button*/}
+        <Button
+          // ghost
+          // type="link"
+          data-testid="languageUIToggle"
+          className="languageUIToggle"
+          onClick={handleChangeLanguage}
+        >
+          {t("languageToggle")}
         </Button>
-        </header>
-        <h1 className="test"> {t('title')} </h1>
-        <h2> {t('slogan')} </h2>
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <Tooltip placement="topLeft" title={t('tooltipTitle')}>
-            <Button data-testid="toggle" onClick={handleClickToggle} type="primary">
-              {toggleText}
-              <Icon type="swap" />
-            </Button>
-          </Tooltip>
-          <Search
-            className="searchbar"
-            placeholder={t('searchbarPlaceholder')} 
-            onSearch={handleClickSearch} 
-          />
-          <div dangerouslySetInnerHTML={{__html: sanitizer(testState)}}/>
-          {/* //TODO - what are target and rel? */}
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
+      </Header>
+      <Content className="main">
+        <hgroup className="titleHeader">
+          <h1 id="title"> {title} </h1>
+          <h2 id="slogan"> {t("slogan")} </h2>
+        </hgroup>
+        <div className="searchContainer">
+        <Tooltip placement="left" title={t("tooltipTitle")}>
+          <Button
+            className="dictionaryToggle"
+            data-testid="toggle"
+            onClick={handleClickToggle}
+            type="primary"
           >
-            Learn React
-          </a>
-        {/* </header> */}
-      </div>
-    );
+            {toggleText}
+            <Icon type="swap" />
+          </Button>
+        </Tooltip>
+        <Search
+          size="large"
+          className="searchbar"
+          placeholder={t("searchbarPlaceholder")}
+          onSearch={handleClickSearch}
+        />
+        </div>
+        <div dangerouslySetInnerHTML={{ __html: sanitizer(testState) }} />
+      </Content>
+      <Footer className="footer">
+        {/* //TODO - what are target and rel? */}
+        <a
+          className="App-link"
+          href="https://reactjs.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Learn React
+        </a>
+      </Footer>
+    </div>
+  );
 }
 
 export default App;
