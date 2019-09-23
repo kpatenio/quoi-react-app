@@ -12,14 +12,8 @@ describe("just a test", () => {
         expect(container.firstChild).toMatchSnapshot();
     })
 
-    it('should detect text in page', () => {
-        const {queryAllByText} = render(<App/>);
-        expect(queryAllByText('Hello there!')).not.toStrictEqual([]);
-    })
-
     it('should render button', () => {
-        const {getByTestId, queryByTestId} = render(<App/>);
-        getByTestId('toggle');
-        expect(queryByTestId('toggle')).not.toStrictEqual([]);
+        const {getByTestId} = render(<App/>);
+        getByTestId('dictionaryToggle');
     })
 })

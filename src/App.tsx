@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Layout, Button, Icon, Tooltip, Input} from "antd";
 // import logo from './logo.svg';
+import FooterComponent from './components/FooterComponent';
 
 import {I18nextProvider, useTranslation, Trans} from 'react-i18next';
 import i18next from 'i18next';
@@ -18,6 +19,7 @@ import entry from './mockedAssets/en-fr/entry';
 
 const App: React.FC = () => {
   const {t, i18n} = useTranslation();
+  const {Header, Content} = Layout;
   const {Search} = Input;
   // const content: string = entry.entryContent // temporary content!
   const sadFaceEmoji: string = '&#128542'
@@ -94,7 +96,6 @@ const App: React.FC = () => {
     Note that antd's ConfigProvider has locale support with it's own translated placeholders. Note that these can usually still be replaced via placeholder prop.
     This depends on the component. For now, let's use i18next! After implementing all translations, we can use ConfigProvider 
   */
- const { Header, Content, Footer } = Layout;
   return (
     <div className="App">
       <Header className="header">
@@ -118,7 +119,7 @@ const App: React.FC = () => {
         <Tooltip placement="left" title={t("tooltipTitle")}>
           <Button
             className="dictionaryToggle"
-            data-testid="toggle"
+            data-testid="dictionaryToggle"
             onClick={handleClickToggle}
             type="primary"
           >
@@ -135,17 +136,7 @@ const App: React.FC = () => {
         </div>
         <div dangerouslySetInnerHTML={{ __html: sanitizer(testState) }} />
       </Content>
-      <Footer className="footer">
-        {/* //TODO - what are target and rel? */}
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </Footer>
+      <FooterComponent/>
     </div>
   );
 }
