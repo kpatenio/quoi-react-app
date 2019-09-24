@@ -1,0 +1,56 @@
+// Import LESS colour variables AND theme variables from antd.
+// To see the full list of colours: https://ant.design/docs/spec/colors#Base-Color-Palettes
+@import '~antd/es/style/themes/default.less';
+
+
+// Height, margins, etc.
+@headerHeight: 64px;
+
+// COLORS
+@blackBlue: #00152a; // default colour of antd header. Keep in case we want to reuse this.
+
+body {
+    overflow: hidden;
+}
+
+.header {
+    background-color: @blackBlue;
+    .languageUIToggle {
+        position: absolute;
+        // left: 90%;
+        right: 5%;
+        top: @headerHeight / 4; // FIXME - refactor. To center the button.
+    }
+}
+
+.main {
+    // TODO - do more research on screen size
+    .titleHeader {
+        margin-top: 1.2em;
+        text-align: center;
+        #title {
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            // text-transform:  uppercase; // only enable if we want to change the overall app logo
+            font-size: 4em;
+            margin-bottom: 0;
+        }
+        #slogan {
+            font-style: italic;
+            font-size: 1.4em;
+            font-weight: normal;
+            margin-bottom: 1.2em;
+        }
+    }
+    .searchContainer {
+        transform: translateX(25%);
+        .dictionaryToggle {
+            display: block;
+            background-color: #2f54eb;
+        }
+        .searchbar {
+            width: 50%;
+            display: block;
+        }
+    }
+}

@@ -6,14 +6,32 @@ QUOI is a work-in-progress French dictionary React app that utilizes the [Collin
 
 To learn more about QUOI's progress and/or history, check out the wiki [here](https://github.com/kpatenio/quoi-react-app/wiki).
 
-## Libraries and Frameworks
-Currently in use:
+## Dependencies
+Should be installed when running `npm install`. Frameworks and libraries currently in use:
 - React 16.9
-- TypeScript
-- [Axios](https://github.com/axios/axios)
+- TypeScript 3.5.3
+- [antd](https://ant.design/) - UI components
+- [less](http://lesscss.org/) - CSS preprocessor compatible with antd
+- [react-i18next](https://react.i18next.com/) and i18next - for translating the user interface between English and French
+- [Axios](https://github.com/axios/axios) - a promise-based http client for javascript
+- [dompurify](https://github.com/cure53/DOMPurify) - to sanitize responses from APIs and prevent XSS attacks
+
+## Dev Dependencies
+Not needed to run the app, but required for debugging and additional functionality (such as inserting styles into antd components):
+- [react-testing-library](https://testing-library.com/docs/react-testing-library/intro)
+- [react-app-rewired](https://github.com/timarney/react-app-rewired) - this allows us to modify create-react-app's config _without_ ejecting our app and forking the official create-react-app repo! This was needed to ensure we could run `babel-plugin-import`. Be sure to follow the instructions for antd compatibility [here](https://ant.design/docs/react/use-in-typescript#Advanced-Guides).
+- [customize-cra](https://github.com/arackaf/customize-cra) - needed to ensure `react-app-rewired` works for antd. Read more [here](https://ant.design/docs/react/use-in-typescript#Advanced-Guides).
+- babel-plugin-import - needed to ensure we only import requested antd components. This will speed up our app startup and not load all antd components! See instructions [here](https://ant.design/docs/react/use-in-typescript#Use-babel-plugin-import) and [here](https://github.com/ant-design/babel-plugin-import#style).
+- [less-loader](https://github.com/webpack-contrib/less-loader) - designed to compile LESS to CSS. This allows us to globally set colour themes for antd components, as well as import less stylesheets directly into our code. Read official antd instructions [here](https://ant.design/docs/react/use-in-typescript#Customize-Theme). Also read the customize-cra api documentation [here](https://github.com/arackaf/customize-cra/blob/f546a00b1d0220cf1cfcb6ff7b5db3f7fa9c2f59/api.md#addlessloaderloaderoptions).
 
 ## Server and API Calls
 HTTP calls are made via Axios to a Flask server hosted in [quoi-flask-backend](https://github.com/kpatenio/quoi-flask-backend) (which, at the moment, can only be run locally). The Flask server calls the Collins API and then returns any retrieved data back to the React app.
+
+## Styling and Components
+All the amazing components used were made by the amazing `antd` developers! The LESS preprocessor was used to customize antd components; note that with `less-loader`, there is no need to manually compile `.less` files. All it takes is a simple `.less` file import!
+
+### My styling disappeared!
+If, for any reason, all `.less` styles disappear from the page, try rerunning the app using `npm start`.
 
 ## Available Scripts (from create-react-app)
 In the project directory, you can run:

@@ -1,0 +1,11 @@
+{
+    "translation": {
+        "enterWord": "Veuillez saisir un mot.",
+        "languageToggle": "EN",
+        "searchbarPlaceholder": "Rechercher un mot",
+        "slogan": "L'appli à utiliser lorsqu'on se demande quoi ?",
+        "toggleLabel_en-fr": "Anglais-Français",
+        "toggleLabel_fr-en": "Français-Anglais",
+        "tooltipTitle": "Cliquez ici pour changer la langue du dictionnaire !"
+    }
+}

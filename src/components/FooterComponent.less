@@ -1,0 +1,31 @@
+// Import LESS colour variables AND theme variables from antd.
+// To see the full list of colours: https://ant.design/docs/spec/colors#Base-Color-Palettes
+@import '~antd/es/style/themes/default.less';
+
+
+@gh: github;
+
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    
+    .@{gh} {
+        display: inline;
+        #@{gh}-profile {
+            margin-left: .5em;
+        }
+        text-align: left;
+    }
+    .api-footer {
+        #api-message {
+            margin: 0;
+            position: absolute;
+            right: 1.5em;
+            font-size: 80%;
+        }
+        #api-copyright {
+            font-style: italic;
+        }
+    }
+}

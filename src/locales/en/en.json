@@ -1,0 +1,11 @@
+{
+    "translation": {
+        "enterWord": "Please enter a word.",
+        "languageToggle": "FR",
+        "searchbarPlaceholder": "Search for a word",
+        "slogan": "The app to use when you ask yourself quoi ?",
+        "toggleLabel_en-fr": "English-French",
+        "toggleLabel_fr-en": "French-English",
+        "tooltipTitle": "Click here to swap the dictionary language!"
+    }
+}
