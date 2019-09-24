@@ -3,14 +3,29 @@
 @import '~antd/es/style/themes/default.less';
 
 
-// Height, margins, etc.
-@headerHeight: 64px;
-
-// COLORS
-@blackBlue: #00152a; // default colour of antd header. Keep in case we want to reuse this.
+@gh: github;
 
 .footer {
     position: absolute;
     width: 100%;
     bottom: 0;
+    
+    .@{gh} {
+        display: inline;
+        #@{gh}-profile {
+            margin-left: .5em;
+        }
+        text-align: left;
+    }
+    .api-footer {
+        #api-message {
+            margin: 0;
+            position: absolute;
+            right: 1.5em;
+            font-size: 80%;
+        }
+        #api-copyright {
+            font-style: italic;
+        }
+    }
 }
