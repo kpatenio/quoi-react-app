@@ -25,7 +25,7 @@ const FooterComponent: React.FC = () => {
                     kpatenio
                 </a>
             </div>
-            <div className="api-footer">
+            <div className="api-footer"> {/* TODO - translate this */}
                 <p id="api-message"> Search results are provided by: <span id="api-copyright">www.Collinsdictionary.com © HarperCollins Publishers Ltd 2014 </span></p>
             </div>
         </Footer>

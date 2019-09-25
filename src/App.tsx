@@ -1,6 +1,5 @@
 import React, {useState, useEffect, useImperativeHandle} from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import {Layout, Button, Icon, Tooltip, Input} from "antd";
+import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 // import logo from './logo.svg';
 import HeaderComponent from './components/HeaderComponent';
 import MainHomepage from './components/MainHomepage';
@@ -12,7 +11,6 @@ import i18next from 'i18next';
 // import './App.css';
 import './App.less';
 import axios from 'axios';
-import DOMPurify from 'dompurify';
 // import parse from 'html-react-parser'; // if using this, reinstall package
 import entry from './mockedAssets/en-fr/entry';
 
@@ -104,16 +102,18 @@ const App: React.FC = () => {
 
   return (
     <Router>
-    <div className="App">
-      <HeaderComponent handleChangeLanguage={handleChangeLanguage}/> 
-      <MainHomepage 
-        handleClickToggle={handleClickToggle}
-        toggleText={toggleText}
-        handleClickSearch={handleClickSearch}
-        testState={testState}
-      />
-      <FooterComponent/>
-    </div>
+      <Switch>
+        <div className="App">
+          <HeaderComponent handleChangeLanguage={handleChangeLanguage}/> 
+          <MainHomepage 
+            handleClickToggle={handleClickToggle}
+            toggleText={toggleText}
+            handleClickSearch={handleClickSearch}
+            testState={testState}
+          />
+          <FooterComponent/>
+        </div>
+      </Switch>
     </Router>
   );
 }
