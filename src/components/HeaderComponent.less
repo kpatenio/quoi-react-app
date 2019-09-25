@@ -1,0 +1,21 @@
+// Import LESS colour variables AND theme variables from antd.
+// To see the full list of colours: https://ant.design/docs/spec/colors#Base-Color-Palettes
+@import '~antd/es/style/themes/default.less';
+
+// Height, margins, etc.
+@headerHeight: 64px;
+
+.header {
+    background-color: black;
+    .languageUIToggle {
+        position: absolute;
+        font-weight: bold;
+        right: 5%;
+        top: @headerHeight / 4; // FIXME - refactor. To center the button.
+
+        &:focus, &:hover {
+            border-color: @geekblue-4;
+            color: @geekblue-4;
+        }
+    }
+}

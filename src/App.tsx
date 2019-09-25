@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useImperativeHandle} from 'react';
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import {Layout, Button, Icon, Tooltip, Input} from "antd";
 // import logo from './logo.svg';
+import HeaderComponent from './components/HeaderComponent';
+import MainHomepage from './components/MainHomepage';
 import FooterComponent from './components/FooterComponent';
 
-import {I18nextProvider, useTranslation, Trans} from 'react-i18next';
+import {I18nextProvider, useTranslation} from 'react-i18next';
 import i18next from 'i18next';
 
 // import './App.css';
@@ -19,18 +22,15 @@ import entry from './mockedAssets/en-fr/entry';
 
 const App: React.FC = () => {
   const {t, i18n} = useTranslation();
-  const {Header, Content} = Layout;
-  const {Search} = Input;
+
   // const content: string = entry.entryContent // temporary content!
   const sadFaceEmoji: string = '&#128542'
-  const sanitizer = DOMPurify.sanitize;
+
   
   const [testState, setTestState] = useState<string>('');
 
   const [dictCode, setDictCode] = useState<string>('english-french'); // To be sent to and used by API.
   const [toggleText, setToggleText] = useState<string>(t('toggleLabel_en-fr')); 
-
-  const title = '« quoi »';
 
   const getContent = (word: string | null) => {
     axios.get(`http://127.0.0.1:5000/${dictCode}/${word}`)
@@ -96,48 +96,25 @@ const App: React.FC = () => {
     Note that antd's ConfigProvider has locale support with it's own translated placeholders. Note that these can usually still be replaced via placeholder prop.
     This depends on the component. For now, let's use i18next! After implementing all translations, we can use ConfigProvider 
   */
+
+
+  // SEE HERE: https://fettblog.eu/typescript-react/components/
+  // SEE HERE TOO: https://www.robinwieruch.de/react-function-component
+
+
   return (
+    <Router>
     <div className="App">
-      <Header className="header">
-        {/*TODO - determine button*/}
-        <Button
-          // ghost
-          // type="link"
-          data-testid="languageUIToggle"
-          className="languageUIToggle"
-          onClick={handleChangeLanguage}
-        >
-          {t("languageToggle")}
-        </Button>
-      </Header>
-      <Content className="main">
-        <hgroup className="titleHeader">
-          <h1 id="title"> {title} </h1>
-          <h2 id="slogan"> {t("slogan")} </h2>
-        </hgroup>
-        <div className="searchContainer">
-        <Tooltip placement="left" title={t("tooltipTitle")}>
-          <Button
-            className="dictionaryToggle"
-            data-testid="dictionaryToggle"
-            onClick={handleClickToggle}
-            type="primary"
-          >
-            {toggleText}
-            <Icon type="swap" />
-          </Button>
-        </Tooltip>
-        <Search
-          size="large"
-          className="searchbar"
-          placeholder={t("searchbarPlaceholder")}
-          onSearch={handleClickSearch}
-        />
-        </div>
-        <div dangerouslySetInnerHTML={{ __html: sanitizer(testState) }} />
-      </Content>
+      <HeaderComponent handleChangeLanguage={handleChangeLanguage}/> 
+      <MainHomepage 
+        handleClickToggle={handleClickToggle}
+        toggleText={toggleText}
+        handleClickSearch={handleClickSearch}
+        testState={testState}
+      />
       <FooterComponent/>
     </div>
+    </Router>
   );
 }
 
