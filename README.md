@@ -23,6 +23,7 @@ Not needed to run the app, but required for debugging and additional functionali
 - [customize-cra](https://github.com/arackaf/customize-cra) - needed to ensure `react-app-rewired` works for antd. Read more [here](https://ant.design/docs/react/use-in-typescript#Advanced-Guides).
 - babel-plugin-import - needed to ensure we only import requested antd components. This will speed up our app startup and not load all antd components! See instructions [here](https://ant.design/docs/react/use-in-typescript#Use-babel-plugin-import) and [here](https://github.com/ant-design/babel-plugin-import#style).
 - [less-loader](https://github.com/webpack-contrib/less-loader) - designed to compile LESS to CSS. This allows us to globally set colour themes for antd components, as well as import less stylesheets directly into our code. Read official antd instructions [here](https://ant.design/docs/react/use-in-typescript#Customize-Theme). Also read the customize-cra api documentation [here](https://github.com/arackaf/customize-cra/blob/f546a00b1d0220cf1cfcb6ff7b5db3f7fa9c2f59/api.md#addlessloaderloaderoptions).
+- [cypress.io](https://www.cypress.io/) - e2e testing framework (Chrome only)
 
 ## Server and API Calls
 HTTP calls are made via Axios to a Flask server hosted in [quoi-flask-backend](https://github.com/kpatenio/quoi-flask-backend) (which, at the moment, can only be run locally). The Flask server calls the Collins API and then returns any retrieved data back to the React app.
@@ -32,6 +33,27 @@ All the amazing components used were made by the amazing `antd` developers! The 
 
 ### My styling disappeared!
 If, for any reason, all `.less` styles disappear from the page, try rerunning the app using `npm start`.
+
+## Running tests
+### Unit tests (Jest)
+To run all tests at once:
+```
+npm test
+```
+To run all tests in watch mode:
+```
+npm run test-watch
+```
+
+### E2E tests (Cypress.io)
+To run Cypress tests once:
+```
+npx cypress
+```
+To run Cypress tests in watch mode:
+```
+npx cypress open
+```
 
 ## Available Scripts (from create-react-app)
 In the project directory, you can run:
