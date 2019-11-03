@@ -44,6 +44,10 @@ To run all tests in watch mode:
 ```
 npm run test-watch
 ```
+To update jest snapshots:
+```
+npm run test -- -u
+```
 
 ### E2E tests (Cypress.io)
 To run Cypress tests once:
