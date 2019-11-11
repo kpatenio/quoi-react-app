@@ -1,10 +1,11 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 // import logo from './logo.svg';
 import HeaderComponent from './components/HeaderComponent';
 import MainHomepage from './components/MainHomepage';
 import FooterComponent from './components/FooterComponent';
 import About from './components/About';
+import Entry from './components/Entry';
 
 import {I18nextProvider, useTranslation} from 'react-i18next';
 import i18next from 'i18next';
@@ -47,6 +48,7 @@ const App: React.FC = () => {
           <Switch>
             <Route path="/" exact component={MainHomepage} />
             <Route path="/about" exact component={About} />
+            <Route path="/search/:dictCode/:entryId" component={Entry} />
           </Switch>
           <FooterComponent/>
         </div>

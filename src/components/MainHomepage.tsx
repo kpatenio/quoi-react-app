@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-// import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 import {Layout, Button, Icon, Tooltip, Input} from "antd";
 
 import {I18nextProvider, useTranslation} from 'react-i18next';
@@ -12,10 +12,13 @@ const {Content} = Layout;
 const {Search} = Input;
 const sanitizer = DOMPurify.sanitize;
 
-
-const MainHomepage: React.FC = () => {
+// FIXME - use proper types of useRouter. This is a temp hack.
+const MainHomepage: React.FC<any> = (props) => {
     const title = '« quoi »'; // TODO - make this a constant! + separate component for title
     const {t} = useTranslation();
+    console.log(props.history);
+
+    const history = props.history;
 
     // const content: string = entry.entryContent // temporary content!
     const sadFaceEmoji: string = '&#128542'
@@ -23,7 +26,7 @@ const MainHomepage: React.FC = () => {
     // TODO
     // use useEffect to use values instead of hardcoding here?
     // this is to replicate ComponentDidMount
-    const [testState, setTestState] = useState<string>('');
+    // const [testState, setTestState] = useState<string>('');
     const [dictCode, setDictCode] = useState<string>('english-french'); // To be sent to and used by API.
     const [isEnglishFrenchDict, setIsEnglishFrenchDict] = useState<boolean>(true); // by default, set to English-French dictionary
 
@@ -33,27 +36,40 @@ const MainHomepage: React.FC = () => {
     }, []);
   
     const getContent = (word: string | null) => {
-      axios.get(`http://127.0.0.1:5000/${dictCode}/${word}`)
-        .then((response) => {
-            console.log(response);
-            if (!response.data.hasOwnProperty('suggestions')) {
-                setTestState(response.data.entryContent);
-            } else {
-                // TODO - use a new component or tag to display list of suggestions
-                setTestState(`No results available for '${word}' ${sadFaceEmoji} \n Did you mean ${response.data.suggestions} ?`);
-            }
-        })
-        .catch(() => {
-            // TODO - make error call for actual non-mocked calls
-            // TODO - this catch is called if 1. server is offline OR 2.
-            // TODO - say "unable to search for <word> at this time" instead of offline server
-            setTestState(`The server is currently offline. ${sadFaceEmoji} Please try again later.`);
-        })
+        history.push(`/search/${dictCode}/${word}`);
+
+    //   axios.get(`http://127.0.0.1:5000/${dictCode}/${word}`)
+    //     .then((response) => {
+    //         console.log(response);
+    //         if (!response.data.hasOwnProperty('suggestions')) {
+    //             // setTestState(response.data.entryContent);
+    //             console.log("valid entry");
+    //             // TODO - make response call after redirecting to term page. Otherwise, how would we pass response?
+    //             history.push(`/search/${response.data.entryId}`);
+
+    //             // TODO - history.push to search/entryId
+    //             // TODO - if entry doesn't exist, redirect to an error page OR do not go through
+
+    //         } else { // here entryId && entryLabel && entryUrl should be non-existant
+    //             // TODO - use a new component or tag to display list of suggestions
+    //             // setTestState(`No results available for '${word}' ${sadFaceEmoji} \n Did you mean ${response.data.suggestions} ?`);
+    //             console.log('invalid entry');
+    //             // console.log(`No results available for '${word}' ${sadFaceEmoji} \n Did you mean ${response.data.suggestions} ?`);
+
+    //         }
+    //     })
+    //     // .catch(() => {
+    //     //     // TODO - make error call for actual non-mocked calls
+    //     //     // TODO - this catch is called if 1. server is offline OR 2.
+    //     //     // TODO - say "unable to search for <word> at this time" instead of offline server
+    //     //     setTestState(`The server is currently offline. ${sadFaceEmoji} Please try again later.`);
+    //     // })
     }
   
     const handleClickSearch = (word: string | null) => {
       if (word === null || word.trim() === "") {
-        setTestState(t('enterWord'))
+        // setTestState(t('enterWord'))
+        console.log("no word");
       } else {
         getContent(word);
       }
@@ -68,7 +84,7 @@ const MainHomepage: React.FC = () => {
       setIsEnglishFrenchDict(!isEnglishFrenchDict);
     }
 
-    const toggleText: string = isEnglishFrenchDict ? t('toggleLabel_fr-en') : t('toggleLabel_en-fr');
+    const toggleText: string = isEnglishFrenchDict ? t('toggleLabel_en-fr') : t('toggleLabel_fr-en');
 
     return (
         <Content className="main">
@@ -97,9 +113,9 @@ const MainHomepage: React.FC = () => {
                 />
             </div>
 
-            <div dangerouslySetInnerHTML={{ __html: sanitizer(testState) }} />
+            {/* <div dangerouslySetInnerHTML={{ __html: sanitizer(testState) }} /> */}
         </Content>
     )
 }
 
-export default MainHomepage;
+export default withRouter(MainHomepage);

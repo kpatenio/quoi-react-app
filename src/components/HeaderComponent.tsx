@@ -19,18 +19,6 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({handleChangeLanguage})
     
     return (
     <Header className="header">
-{/* 
-<Menu
-        theme="dark"
-        mode="horizontal"
-        style={{ lineHeight: '64px' }}
-        defaultSelectedKeys={['home']}
-      >
-        <Menu.Item key="home"><Link className="home" to='/'>Home</Link></Menu.Item>        
-        <Menu.Item key="about"><Link className="about" to='/about'>About</Link></Menu.Item>
-
-    </Menu> */}
-
         <span className="logo">
             <Link className="home" to='/'>« quoi »</Link>
         </span>
