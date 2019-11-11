@@ -2,6 +2,8 @@
 // To see the full list of colours: https://ant.design/docs/spec/colors#Base-Color-Palettes
 @import '~antd/es/style/themes/default.less';
 
+// import Google fonts as CSS; see https://stackoverflow.com/questions/22877017/how-to-use-google-font-in-less-css-any-other-solution-to-embedded-custom-font
+@import (css) url('https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap');
 
 .main {
     // TODO - do more research on screen size
@@ -14,6 +16,7 @@
             // text-transform:  uppercase; // only enable if we want to change the overall app logo
             font-size: 4em;
             margin-bottom: 0;
+            font-family: 'Berkshire Swash';
         }
         #slogan {
             font-style: italic;
@@ -29,8 +32,9 @@
             background-color: @geekblue-7;
 
             &:focus, &:hover {
-                background-color: @geekblue-6;
+                background-color: @blue-7;
                 // border-width: 2px;
+                border-color: @blue-7;
             }
 
         }

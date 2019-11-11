@@ -4,9 +4,8 @@ import {Layout, Button} from "antd";
 import {useTranslation} from 'react-i18next';
 
 import './HeaderComponent.less';
-// import About from './components/About';
-import {Link} from 'react-router-dom';
 
+import {Link} from 'react-router-dom';
 
 const {Header} = Layout;
 
@@ -20,10 +19,29 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({handleChangeLanguage})
     
     return (
     <Header className="header">
+{/* 
+<Menu
+        theme="dark"
+        mode="horizontal"
+        style={{ lineHeight: '64px' }}
+        defaultSelectedKeys={['home']}
+      >
+        <Menu.Item key="home"><Link className="home" to='/'>Home</Link></Menu.Item>        
+        <Menu.Item key="about"><Link className="about" to='/about'>About</Link></Menu.Item>
 
-        <Link to='/about'>
-            About
-        </Link>
+    </Menu> */}
+
+        <span className="logo">
+            <Link className="home" to='/'>« quoi »</Link>
+        </span>
+
+        <nav>
+            <ul>
+                <li>
+                    <Link to='/about'>About</Link>
+                </li>
+            </ul>
+        </nav>
 
         {/*TODO - determine button*/}
         <Button

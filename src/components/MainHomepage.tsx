@@ -14,7 +14,7 @@ const sanitizer = DOMPurify.sanitize;
 
 
 const MainHomepage: React.FC = () => {
-    const title = '« quoi »';
+    const title = '« quoi »'; // TODO - make this a constant! + separate component for title
     const {t} = useTranslation();
 
     // const content: string = entry.entryContent // temporary content!
@@ -27,10 +27,10 @@ const MainHomepage: React.FC = () => {
     const [dictCode, setDictCode] = useState<string>('english-french'); // To be sent to and used by API.
     const [isEnglishFrenchDict, setIsEnglishFrenchDict] = useState<boolean>(true); // by default, set to English-French dictionary
 
-    // useEffect(() => {
-    //     // ComponentWillUnmount
-    //     return () => console.log("Unmounted!");
-    // })
+    useEffect(() => {
+        // ComponentWillUnmount using React Hooks' useEffect
+        return () => console.log("Unmounted homepage!");
+    }, []);
   
     const getContent = (word: string | null) => {
       axios.get(`http://127.0.0.1:5000/${dictCode}/${word}`)
