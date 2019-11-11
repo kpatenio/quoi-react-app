@@ -1,6 +1,8 @@
 {
     "translation": {
+        "about": "À propos",
         "enterWord": "Veuillez saisir un mot.",
+        "footer": "Des résultats du dictionnaire sont fournis par",
         "languageToggle": "EN",
         "searchbarPlaceholder": "Rechercher un mot",
         "slogan": "L'appli à utiliser lorsqu'on se demande quoi ?",

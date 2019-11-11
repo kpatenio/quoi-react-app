@@ -2,10 +2,10 @@ import React from 'react';
 import {Layout, Button} from "antd";
 
 import {useTranslation} from 'react-i18next';
+import {Link} from 'react-router-dom';
+import AppConstants from '../AppConstants';
 
 import './HeaderComponent.less';
-
-import {Link} from 'react-router-dom';
 
 const {Header} = Layout;
 
@@ -20,13 +20,13 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({handleChangeLanguage})
     return (
     <Header className="header">
         <span className="logo">
-            <Link className="home" to='/'>« quoi »</Link>
+    <       Link className="home" to='/'>{AppConstants.App.TITLE}</Link>
         </span>
 
         <nav>
             <ul>
                 <li>
-                    <Link to='/about'>About</Link>
+                    <Link to='/about'>{t('about')}</Link>
                 </li>
             </ul>
         </nav>

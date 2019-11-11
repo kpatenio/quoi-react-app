@@ -9,20 +9,12 @@ import './Entry.less';
 const sanitizer = DOMPurify.sanitize;
 
 const Entry: React.FC<any> = ({match}) => {  
-    // TODO - make response call after redirecting to term page. Otherwise, how would we pass response?
 
-    const {t} = useTranslation();
-
-    // TODO - use match
-    // see here at this timestamp: https://youtu.be/Law7wfdg_ls?t=1788
-    
-    console.log(match);
-
+    const {t} = useTranslation();    
     const [entry, setEntry] = useState();
 
     // ComponentDidMount
     useEffect(() => {
-        // FIXME - issue with how to get dictCode? Maybe pass to search/{dictCode}/{term}?
         axios.get(`http://127.0.0.1:5000/${match.params.dictCode}/${match.params.entryId}`)
         .then((response) => {
             console.log(response);
