@@ -4,7 +4,8 @@ enum DictCode {
 }
 
 enum App {
-    TITLE = "« quoi »"
+    TITLE = "« quoi »",
+    SAD_FACE_EMOJI = "&#128542"
 }
 
 export default {

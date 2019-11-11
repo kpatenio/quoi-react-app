@@ -5,6 +5,7 @@ import {useTranslation} from 'react-i18next';
 import DOMPurify from 'dompurify';
 
 import './Entry.less';
+import AppConstants from '../AppConstants';
 
 const sanitizer = DOMPurify.sanitize;
 
@@ -28,15 +29,15 @@ const Entry: React.FC<any> = ({match}) => {
                 console.log('invalid entry');
             }
         })
+        
+        .catch(() => {
+            // TODO - make error call for actual non-mocked calls
+            // TODO - this catch is called if 1. server is offline OR 2.
+            // TODO - say "unable to search for <word> at this time" instead of offline server
+            setEntry(`The server is currently offline. ${AppConstants.App.SAD_FACE_EMOJI} Please try again later.`);
+        })
     })
-
-        //   .catch(() => {
-              // TODO - make error call for actual non-mocked calls
-              // TODO - this catch is called if 1. server is offline OR 2.
-              // TODO - say "unable to search for <word> at this time" instead of offline server
-            //   setTestState(`The server is currently offline. ${sadFaceEmoji} Please try again later.`);
-        //   })
-
+        
 
 
     return (
