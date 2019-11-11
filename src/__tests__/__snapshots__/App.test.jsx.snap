@@ -3,12 +3,31 @@
 exports[`just a test should render App 1`] = `
 <div
   class="App"
-  computedmatch="[object Object]"
-  location="[object Object]"
 >
   <header
     class="header ant-layout-header"
   >
+    <span
+      class="logo"
+    >
+      <a
+        class="home"
+        href="/"
+      >
+        « quoi »
+      </a>
+    </span>
+    <nav>
+      <ul>
+        <li>
+          <a
+            href="/about"
+          >
+            About
+          </a>
+        </li>
+      </ul>
+    </nav>
     <button
       class="ant-btn languageUIToggle ant-btn-background-ghost"
       data-testid="languageUIToggle"
@@ -106,7 +125,6 @@ exports[`just a test should render App 1`] = `
         </span>
       </span>
     </div>
-    <div />
   </main>
   <footer
     class="footer ant-layout-footer"
