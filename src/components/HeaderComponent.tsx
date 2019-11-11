@@ -4,6 +4,9 @@ import {Layout, Button} from "antd";
 import {useTranslation} from 'react-i18next';
 
 import './HeaderComponent.less';
+// import About from './components/About';
+import {Link} from 'react-router-dom';
+
 
 const {Header} = Layout;
 
@@ -17,6 +20,11 @@ const HeaderComponent: React.FC<HeaderComponentProps> = ({handleChangeLanguage})
     
     return (
     <Header className="header">
+
+        <Link to='/about'>
+            About
+        </Link>
+
         {/*TODO - determine button*/}
         <Button
             ghost
