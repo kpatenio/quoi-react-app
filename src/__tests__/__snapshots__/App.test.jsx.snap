@@ -23,7 +23,7 @@ exports[`just a test should render App 1`] = `
           <a
             href="/about"
           >
-            About
+            about
           </a>
         </li>
       </ul>
@@ -167,7 +167,9 @@ exports[`just a test should render App 1`] = `
       <p
         id="api-message"
       >
-         Search results are provided by: 
+         
+        footer
+        : 
         <span
           id="api-copyright"
         >
