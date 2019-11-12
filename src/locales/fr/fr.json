@@ -2,9 +2,11 @@
     "translation": {
         "about": "À propos",
         "enterWord": "Veuillez saisir un mot.",
+        "noWord": "Aucun résultat existe pour le mot",
         "footer": "Des résultats du dictionnaire sont fournis par",
         "languageToggle": "EN",
         "searchbarPlaceholder": "Rechercher un mot",
+        "serverError": "Le serveur n'est pas actuellement disponible. Veuillez ressayer de connecter plus tard.",
         "slogan": "L'appli à utiliser lorsqu'on se demande quoi ?",
         "toggleLabel_en-fr": "Anglais-Français",
         "toggleLabel_fr-en": "Français-Anglais",

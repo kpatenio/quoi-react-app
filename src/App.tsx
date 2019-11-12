@@ -10,9 +10,7 @@ import Entry from './components/Entry';
 import {I18nextProvider, useTranslation} from 'react-i18next';
 import i18next from 'i18next';
 
-// import './App.css';
 import './App.less';
-import axios from 'axios';
 // import parse from 'html-react-parser'; // if using this, reinstall package
 import entry from './mockedAssets/en-fr/entry';
 
@@ -33,7 +31,9 @@ const App: React.FC = () => {
 
   /* TODO
     Note that antd's ConfigProvider has locale support with it's own translated placeholders. Note that these can usually still be replaced via placeholder prop.
-    This depends on the component. For now, let's use i18next! After implementing all translations, we can use ConfigProvider 
+    This depends on the component. For now, let's use i18next! After implementing all translations, we can use ConfigProvider <div className=""></div>
+
+    OR we use i18next provider if load language based on local storage (future concept)
   */
 
 
@@ -45,11 +45,11 @@ const App: React.FC = () => {
     <Router>
         <div className="App">
           <HeaderComponent handleChangeLanguage={handleChangeLanguage}/>
-          <Switch>
-            <Route path="/" exact component={MainHomepage} />
-            <Route path="/about" exact component={About} />
-            <Route path="/search/:dictCode/:entryId" component={Entry} />
-          </Switch>
+            <Switch>
+              <Route path="/" exact component={MainHomepage} />
+              <Route path="/about" exact component={About} />
+              <Route path="/search/:dictCode/:entryId" component={Entry} />
+            </Switch>
           <FooterComponent/>
         </div>
     </Router>
