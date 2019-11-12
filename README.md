@@ -1,6 +1,8 @@
 # QUOI
 The app to use when you ask yourself « Quoi » !
 
+[![Build Status](https://travis-ci.org/kpatenio/quoi-react-app.svg?branch=master)](https://travis-ci.org/kpatenio/quoi-react-app)
+
 ## About
 QUOI is a work-in-progress French dictionary React app that utilizes the [Collins Dictionary API](https://www.collinsdictionary.com/api/). This project was bootstrapped using [Create React App](https://github.com/facebook/create-react-app).
 
