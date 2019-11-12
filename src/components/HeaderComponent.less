@@ -1,0 +1,58 @@
+// Import LESS colour variables AND theme variables from antd.
+// To see the full list of colours: https://ant.design/docs/spec/colors#Base-Color-Palettes
+@import '~antd/es/style/themes/default.less';
+
+// import Google fonts as CSS; see https://stackoverflow.com/questions/22877017/how-to-use-google-font-in-less-css-any-other-solution-to-embedded-custom-font
+@import (css) url('https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap');
+
+// Height, margins, etc.
+@headerHeight: 64px;
+
+.logo {
+    // width: 150px;
+    color: white;
+    font-family: 'Berkshire Swash';
+    font-size: 250%;
+    float: left;
+
+    .home {
+        height: 60px;
+
+        &:focus, &:hover {
+            // color: @magenta-6;
+            text-decoration: underline;
+        }
+    }
+    
+}
+
+ul {
+    list-style-type: none;
+    float: left;
+    margin-left: 10%;
+
+    li {
+        display: inline-block;
+        text-align: center;
+
+        a {
+            color: white;
+
+            &:focus, &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+.header {
+    background-color: black;
+    width: 100%;
+    padding-left: 30px;
+    .languageUIToggle {
+        position: absolute;
+        font-weight: bold;
+        right: 5%;
+        top: @headerHeight / 4; // FIXME - refactor. To center the button.
+    }
+}

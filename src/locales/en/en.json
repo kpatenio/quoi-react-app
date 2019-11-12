@@ -1,6 +1,8 @@
 {
     "translation": {
+        "about": "About",
         "enterWord": "Please enter a word.",
+        "footer": "Search results are provided by",
         "languageToggle": "FR",
         "searchbarPlaceholder": "Search for a word",
         "slogan": "The app to use when you ask yourself quoi ?",

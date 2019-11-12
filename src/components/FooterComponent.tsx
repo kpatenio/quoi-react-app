@@ -6,11 +6,10 @@ import i18next from 'i18next';
 
 import './FooterComponent.less';
 
-// TODO import and use consts for i18next
-
 const {Footer} = Layout;
 
 const FooterComponent: React.FC = () => {
+    const {t} = useTranslation();  
     return (
         <Footer className="footer">
             <div className="github">
@@ -25,8 +24,8 @@ const FooterComponent: React.FC = () => {
                     kpatenio
                 </a>
             </div>
-            <div className="api-footer">
-                <p id="api-message"> Search results are provided by: <span id="api-copyright">www.Collinsdictionary.com © HarperCollins Publishers Ltd 2014 </span></p>
+            <div className="api-footer"> {/* TODO - translate this */}
+                <p id="api-message"> {t('footer')}: <span id="api-copyright">www.Collinsdictionary.com © HarperCollins Publishers Ltd 2014 </span></p>
             </div>
         </Footer>
     )
