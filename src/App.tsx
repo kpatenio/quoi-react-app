@@ -1,5 +1,5 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Route, Switch, useHistory} from 'react-router-dom';
 // import logo from './logo.svg';
 import HeaderComponent from './components/HeaderComponent';
 import MainHomepage from './components/MainHomepage';
@@ -10,16 +10,40 @@ import Entry from './components/Entry';
 import {I18nextProvider, useTranslation} from 'react-i18next';
 import i18next from 'i18next';
 
+import AppConstants from './AppConstants';
+
 import './App.less';
 // import parse from 'html-react-parser'; // if using this, reinstall package
-import entry from './mockedAssets/en-fr/entry';
 
-// TODO - use TypeScript interfaces!
 // TODO - styling remove .cit with #{word_id} and children "&nbsp"?
 
-const App: React.FC = () => {
+const App: React.FC<any> = () => {
   const {t, i18n} = useTranslation();
 
+  const history = useHistory();
+  
+  const [dictCode, setDictCode] = useState<string>(AppConstants.DictCode.EF); // To be sent to and used by API.
+  const [isEnglishFrenchDict, setIsEnglishFrenchDict] = useState<boolean>(true); // by default, set to English-French dictionary
+
+  const handleClickSearch = (word: string | null) => {
+    if (word === null || word.trim() === "") {
+      console.log("no word");
+    } else {
+      history.push(`/search/${dictCode}/${word}`);
+      window.location.reload(); // this is to ensure that new results will be loaded in our Entry component
+    }
+  }
+
+  const handleClickToggle = () => {
+    if (dictCode === AppConstants.DictCode.EF) {
+      setDictCode(AppConstants.DictCode.FE)
+    } else {
+      setDictCode(AppConstants.DictCode.EF);
+    }
+    setIsEnglishFrenchDict(!isEnglishFrenchDict);
+  }
+
+  const toggleText: string = isEnglishFrenchDict ? t('toggleLabel_en-fr') : t('toggleLabel_fr-en');
 
   const handleChangeLanguage = () => {
     if (i18n.language === 'en') {
@@ -28,6 +52,12 @@ const App: React.FC = () => {
       i18n.changeLanguage('en');
     }
   }
+
+  // This is to fix forward and back browser button navigation.
+  window.onpopstate = () => {
+    window.location.reload();
+  }
+  
 
   /* TODO
     Note that antd's ConfigProvider has locale support with it's own translated placeholders. Note that these can usually still be replaced via placeholder prop.
@@ -42,17 +72,15 @@ const App: React.FC = () => {
 
 
   return (
-    <Router>
-        <div className="App">
-          <HeaderComponent handleChangeLanguage={handleChangeLanguage}/>
-            <Switch>
-              <Route path="/" exact component={MainHomepage} />
-              <Route path="/about" exact component={About} />
-              <Route path="/search/:dictCode/:entryId" component={Entry} />
-            </Switch>
-          <FooterComponent/>
-        </div>
-    </Router>
+    <div className="App">
+      <HeaderComponent handleChangeLanguage={handleChangeLanguage} toggleText={toggleText} onToggle={handleClickToggle} onSearch={handleClickSearch}/>
+        <Switch>
+          <Route path="/" exact render={() => <MainHomepage handleClickToggle={handleClickToggle} toggleText={toggleText} handleClickSearch={handleClickSearch}/>} />
+          <Route path="/about" exact component={About} />
+          <Route path="/search/:dictCode/:entryId" component={Entry} />
+        </Switch>
+      <FooterComponent/>
+    </div>
   );
 }
 

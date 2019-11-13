@@ -2,14 +2,23 @@
 // To see the full list of colours: https://ant.design/docs/spec/colors#Base-Color-Palettes
 @import '~antd/es/style/themes/default.less';
 
-.content {
-    margin-left: 10px;
+.content{
+    margin: 0;
+    position: absolute;
+    &:not(h1) {
     font-size: 1.1em;
     width: 100%;
-    overflow: scroll;
-    position: relative;
+    overflow-y: scroll;
+    // position: relative;
     margin-top: 0;
     margin-left: 30px;
-    max-height: calc(100vh - 150px); // temporary solution for now
+    max-height: calc(100vh - 140px); // temporary solution for now
+    }
 
+    h1 {
+        font-size: 2em;
+        text-align: left;
+        margin-left: 0;
+        font-weight: bold;
+    }
 }
