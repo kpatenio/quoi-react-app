@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Route, Switch, useHistory} from 'react-router-dom';
 // import logo from './logo.svg';
 import HeaderComponent from './components/HeaderComponent';
+import {Layout} from 'antd';
 import MainHomepage from './components/MainHomepage';
 import FooterComponent from './components/FooterComponent';
 import About from './components/About';
@@ -16,6 +17,8 @@ import './App.less';
 // import parse from 'html-react-parser'; // if using this, reinstall package
 
 // TODO - styling remove .cit with #{word_id} and children "&nbsp"?
+
+const {Content} = Layout;
 
 const App: React.FC<any> = () => {
   const {t, i18n} = useTranslation();
@@ -74,11 +77,13 @@ const App: React.FC<any> = () => {
   return (
     <div className="App">
       <HeaderComponent handleChangeLanguage={handleChangeLanguage} toggleText={toggleText} onToggle={handleClickToggle} onSearch={handleClickSearch}/>
-        <Switch>
-          <Route path="/" exact render={() => <MainHomepage handleClickToggle={handleClickToggle} toggleText={toggleText} handleClickSearch={handleClickSearch}/>} />
-          <Route path="/about" exact component={About} />
-          <Route path="/search/:dictCode/:entryId" component={Entry} />
-        </Switch>
+        <Content className="main">
+          <Switch>
+            <Route path="/" exact render={() => <MainHomepage handleClickToggle={handleClickToggle} toggleText={toggleText} handleClickSearch={handleClickSearch}/>} />
+            <Route path="/about" exact component={About} />
+            <Route path="/search/:dictCode/:entryId" component={Entry} />
+          </Switch>
+        </Content>
       <FooterComponent/>
     </div>
   );

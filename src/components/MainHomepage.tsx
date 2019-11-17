@@ -21,13 +21,14 @@ const MainHomepage: React.FC<any> = (props) => {
     }, []);
 
     return (
-        <Content className="main">
+        <React.Fragment>
             <hgroup className="titleHeader">
                 <h1 id="title"> {AppConstants.App.TITLE} </h1>
                 <h2 id="slogan"> {t("slogan")} </h2>
             </hgroup>
             
             <div className="searchContainer">
+                <div className="searchbarContainer">
                 <Tooltip placement="left" title={t("tooltipTitle")}>
                     <Button
                         className="dictionaryToggle"
@@ -46,7 +47,8 @@ const MainHomepage: React.FC<any> = (props) => {
                     onSearch={props.handleClickSearch}
                 />
             </div>
-        </Content>
+            </div>
+        </React.Fragment>
     )
 }
 
