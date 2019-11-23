@@ -51,7 +51,7 @@ To update jest snapshots:
 npm run test -- -u
 ```
 
-### E2E tests (Cypress.io)
+### Integration browser tests (Cypress.io)
 To run Cypress tests once:
 ```
 npx cypress
@@ -60,6 +60,7 @@ To run Cypress tests in watch mode:
 ```
 npx cypress open
 ```
+Note that the localhost server must be running at the same time. Run `npm start` before running the Cypress tests.
 
 ## Available Scripts (from create-react-app)
 In the project directory, you can run:

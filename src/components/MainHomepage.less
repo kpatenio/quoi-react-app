@@ -5,9 +5,18 @@
 // import Google fonts as CSS; see https://stackoverflow.com/questions/22877017/how-to-use-google-font-in-less-css-any-other-solution-to-embedded-custom-font
 @import (css) url('https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap');
 
-.main {
+@media only screen and (max-width: 700px) {
+    .searchContainer {
+        // background-color: red;
+        .dictionaryToggle {
+            // width: 100%;
+        }
+    }
+  }
+
     // TODO - do more research on screen size
     .titleHeader {
+        position: relative;
         margin-top: 1.2em;
         text-align: center;
         #title {
@@ -15,7 +24,7 @@
             letter-spacing: 0.1em;
             // text-transform:  uppercase; // only enable if we want to change the overall app logo
             font-size: 4em;
-            margin-bottom: 0;
+            margin: 0;
             font-family: 'Berkshire Swash';
         }
         #slogan {
@@ -25,22 +34,31 @@
             margin-bottom: 1.2em;
         }
     }
-    .searchContainer {
-        transform: translateX(25%);
-        .dictionaryToggle {
-            display: block;
-            background-color: @geekblue-7;
-
-            &:focus, &:hover {
-                background-color: @blue-7;
-                // border-width: 2px;
-                border-color: @blue-7;
-            }
-
-        }
-        .searchbar {
+    .searchContainer { // https://flexboxfroggy.com/
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        
+        .searchbarContainer {
+            display: flex;
             width: 50%;
-            display: block;
+            flex-direction: column;
+
+            .dictionaryToggle {
+                // width: 180px;
+                // width: 25%;
+                align-self: flex-start;
+                background-color: @geekblue-7;
+    
+                &:focus, &:hover {
+                    background-color: @blue-7;
+                    // border-width: 2px;
+                    border-color: @blue-7;
+                }
+    
+            }
+            &.searchbar {
+                width: 100%;
+            }
         }
     }
-}

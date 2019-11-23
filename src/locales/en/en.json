@@ -2,9 +2,12 @@
     "translation": {
         "about": "About",
         "enterWord": "Please enter a word.",
+        "noWord": "Unable to find any results for the word",
         "footer": "Search results are provided by",
         "languageToggle": "FR",
+        "mock1Caption": "A simple mockup showing the app's initial planned workflow when it was meant to be a Chrome extension.",
         "searchbarPlaceholder": "Search for a word",
+        "serverError": "The server is currently offline. Please try again later.",
         "slogan": "The app to use when you ask yourself quoi ?",
         "toggleLabel_en-fr": "English-French",
         "toggleLabel_fr-en": "French-English",
