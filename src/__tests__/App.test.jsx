@@ -102,6 +102,8 @@ describe("App", () => {
             getByTestId("homepage");
         });
 
+        // FIXME - this test will fail if server is offline!
+        // solution: mock axios!
         it("should navigate to an entry page after entering input via searchbar", () => {
             const { queryByTestId, getByTestId, getByLabelText } = render(
                 <MemoryRouter>
