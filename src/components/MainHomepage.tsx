@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Layout, Button, Icon, Tooltip, Input } from 'antd';
+import React, { useEffect } from 'react';
+import { Button, Icon, Tooltip } from 'antd';
 import { useTranslation } from 'react-i18next';
 
 import SearchBar from './SearchBar';
@@ -8,9 +7,6 @@ import SearchBar from './SearchBar';
 import AppConstants from '../AppConstants';
 
 import './MainHomepage.less';
-
-const { Content } = Layout;
-const { Search } = Input;
 
 const MainHomepage: React.FC<any> = props => {
     const { t } = useTranslation();
