@@ -10,14 +10,8 @@ import AppConstants from '../AppConstants';
 import './Entry.less';
 
 const sanitizer = DOMPurify.sanitize;
-const {Content} = Layout;
 let invalidEntry : string;
 let isError : boolean = false;
-
-// TODO - figure out how to not use window.reload to make new searches appear.
-// Perhaps we can render a separate component for error messages and have it appear only when invalid input is made.
-// That said, entry value still changes whenever we make an axios call. This will still be an issue!
-
 
 const Entry: React.FC<any> = ({match}) => {  
     const {t, i18n} = useTranslation();    
@@ -25,8 +19,10 @@ const Entry: React.FC<any> = ({match}) => {
     const [isValidInput, setisValidInput] = useState<boolean>(true);
     const [recentUrl, setRecentUrl] = useState<string>(match.url);
 
-    const getContent = () => {
-        axios.get(`http://127.0.0.1:5000/${match.params.dictCode}/${match.params.entryId}`)
+    const getContent = (dictCode : string, entryId : string) => {
+        console.log(`calling API for entry ${entryId} and dictionary type ${dictCode}`);
+
+        axios.get(`http://127.0.0.1:5000/${dictCode}/${entryId}`)
         .then((response) => {
             if (!response.data.hasOwnProperty('suggestions')) {
                 console.log("valid entry");
@@ -52,7 +48,8 @@ const Entry: React.FC<any> = ({match}) => {
 
     // ComponentDidMount
     useEffect(() => {
-        getContent();
+        setRecentUrl(match.url);
+        getContent(match.params.dictCode, match.params.entryId);
     }, [])
 
     // ComponentDidUpdate
@@ -67,14 +64,19 @@ const Entry: React.FC<any> = ({match}) => {
 
     // Check if new entry has been searched
     useEffect(() => {
-        console.log(match);
-        console.log(recentUrl);
-    }, [entry])
+        // Changing the language will cause the the entry state to be updated.
+        // To prevent getContent being called whenever we change the language
+        // we can instead detect if the route has changed via the "match" parameters from react router.
+        if(recentUrl !== match.url) {
+            setRecentUrl(match.url);
+            getContent(match.params.dictCode, match.params.entryId);
+        }
+    }, [match])
         
     return (
-        <Content>
+        <div data-testid="entry">
             <div className="content" dangerouslySetInnerHTML={{ __html: sanitizer(entry) }} />
-        </Content>
+        </div>
     )
 }
 

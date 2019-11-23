@@ -11,7 +11,7 @@ const {Footer} = Layout;
 const FooterComponent: React.FC = () => {
     const {t} = useTranslation();  
     return (
-        <Footer className="footer">
+        <Footer className="footer" data-testid="footer">
             <div className="github">
                 <Icon type="github" className="github-logo"/>
                 {/* Info about anchor tag and its attributes: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a */}

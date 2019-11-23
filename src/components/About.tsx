@@ -16,7 +16,7 @@ const About: React.FC = () => {
     const quoi = <span className="quoi">{AppConstants.App.TITLE}</span>;
     
     return (
-    <Content className="main">
+    <div data-testid="about">
         <h1>What is <span className="main-header">{AppConstants.App.TITLE} </span>?</h1>
         <p>
             {quoi} is work-in-progress French-English dictionary that uses <a href="https://www.collinsdictionary.com/api/">The Collins Dictionary API</a> to fetch English-French terms and definitions.
@@ -45,7 +45,7 @@ const About: React.FC = () => {
         </div>
 
         <p>If you have any comments or suggestions, contact the developer via email: <a href="mailto:patenio@ualberta.ca">patenio@ualberta.ca</a>.</p>
-    </Content>
+    </div>
     )
 }
 

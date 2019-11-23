@@ -18,10 +18,13 @@ const SearchBar: React.FC<any> = (props) => {
         placeholder = t("searchbarPlaceholder");
     }
 
+    const className = props.isHomepage ? "searchbar-homepage" : "searchbar-header"
+
     return (
         <React.Fragment>
             <Search
-                className={props.className}
+                data-testid={className}
+                className={className}
                 placeholder={placeholder}
                 onSearch={props.onSearch}
                 size={props.size}

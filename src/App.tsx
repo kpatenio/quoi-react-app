@@ -33,7 +33,6 @@ const App: React.FC<any> = () => {
       console.log("no word");
     } else {
       history.push(`/search/${dictCode}/${word}`);
-      window.location.reload(); // this is to ensure that new results will be loaded in our Entry component
     }
   }
 
@@ -77,7 +76,7 @@ const App: React.FC<any> = () => {
   return (
     <div className="App">
       <HeaderComponent handleChangeLanguage={handleChangeLanguage} toggleText={toggleText} onToggle={handleClickToggle} onSearch={handleClickSearch}/>
-        <Content className="main">
+        <Content className="main" data-testid="main">
           <Switch>
             <Route path="/" exact render={() => <MainHomepage handleClickToggle={handleClickToggle} toggleText={toggleText} handleClickSearch={handleClickSearch}/>} />
             <Route path="/about" exact component={About} />

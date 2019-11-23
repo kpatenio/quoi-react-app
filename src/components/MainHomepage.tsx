@@ -21,7 +21,7 @@ const MainHomepage: React.FC<any> = (props) => {
     }, []);
 
     return (
-        <React.Fragment>
+        <div data-testid="homepage">
             <hgroup className="titleHeader">
                 <h1 id="title"> {AppConstants.App.TITLE} </h1>
                 <h2 id="slogan"> {t("slogan")} </h2>
@@ -41,6 +41,7 @@ const MainHomepage: React.FC<any> = (props) => {
                     </Button>
                 </Tooltip>
                 <SearchBar
+                    isHomepage={true}
                     size="large"
                     className="searchbar"
                     placeholder={t("searchbarPlaceholder")}
@@ -48,7 +49,7 @@ const MainHomepage: React.FC<any> = (props) => {
                 />
             </div>
             </div>
-        </React.Fragment>
+        </div>
     )
 }
 
