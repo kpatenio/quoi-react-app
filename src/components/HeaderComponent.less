@@ -3,7 +3,8 @@
 @import '~antd/es/style/themes/default.less';
 
 // import Google fonts as CSS; see https://stackoverflow.com/questions/22877017/how-to-use-google-font-in-less-css-any-other-solution-to-embedded-custom-font
-@import (css) url('https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap');
+@import (css)
+    url('https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap');
 
 @headerHeight: 64px;
 
@@ -13,36 +14,38 @@
     width: 100%;
     padding-left: 30px;
     display: inline-block;
-    
+
     .logo {
         color: white;
         font-family: 'Berkshire Swash';
         font-size: 250%;
         display: block;
         float: left;
-        
+
         .home {
             height: 60px;
-            
-            &:focus, &:hover {
+
+            &:focus,
+            &:hover {
                 text-decoration: underline;
             }
         }
     }
-    
+
     nav > ul {
         list-style-type: none;
         float: left;
         margin-left: 50px;
-        
+
         li {
             display: inline-block;
             text-align: center;
-            
+
             a {
                 color: white;
-                
-                &:focus, &:hover {
+
+                &:focus,
+                &:hover {
                     text-decoration: underline;
                 }
             }
@@ -55,7 +58,7 @@
         float: right;
         top: @headerHeight / 3; // FIXME - temporary workaround. This is to center the button.
     }
-    
+
     .searchbar-header {
         width: 200px;
         // position: absolute;
@@ -74,4 +77,3 @@
         top: @headerHeight / 4; // FIXME - temporary workaround. This is to center the button.
     }
 }
-
