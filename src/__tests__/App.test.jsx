@@ -51,21 +51,6 @@ describe('App', () => {
             getByTestId('footer');
         });
     });
-    
-    describe("navigating and routing", () => {
-        afterEach(() => {
-            cleanup();
-        })
-        it("should render About page if the About nav is selected", () => {
-            const { getByTestId } = render(
-                <MemoryRouter>
-                    <App />
-                </MemoryRouter>
-            );
-            const aboutButton = getByTestId("header-about");
-            fireEvent.click(aboutButton);
-            getByTestId("about");
-        });
 
     describe('navigating and routing', () => {
         afterEach(() => {
