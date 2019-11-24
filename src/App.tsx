@@ -58,11 +58,6 @@ const App: React.FC<any> = () => {
         }
     };
 
-    // This is to fix forward and back browser button navigation.
-    window.onpopstate = () => {
-        window.location.reload();
-    };
-
     /* TODO
     Note that antd's ConfigProvider has locale support with it's own translated placeholders. Note that these can usually still be replaced via placeholder prop.
     This depends on the component. For now, let's use i18next! After implementing all translations, we can use ConfigProvider <div className=""></div>

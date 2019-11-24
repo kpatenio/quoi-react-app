@@ -13,6 +13,11 @@ const sanitizer = DOMPurify.sanitize;
 let invalidEntry: string;
 let isError: boolean = false;
 
+// TODO + FIXME
+// Fix error when running tests with an offline server
+// Fix error when running jest tests in non-watch mode
+// Involving setting Entry state
+
 const Entry: React.FC<any> = ({ match }) => {
     const { t, i18n } = useTranslation();
     const [entry, setEntry] = useState();
