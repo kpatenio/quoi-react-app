@@ -1,24 +1,26 @@
-import React, {useState, useEffect} from 'react';
-import {Button, Icon, Tooltip, Input} from "antd";
-import {useTranslation} from 'react-i18next';
+import React, { useState, useEffect } from 'react';
+import { Button, Icon, Tooltip, Input } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 import AppConstants from '../AppConstants';
 
-const {Search} = Input;
+const { Search } = Input;
 
 // FIXME - use proper typing. Temporary workaround for now.
-const SearchBar: React.FC<any> = (props) => {
-    const {t} = useTranslation();
+const SearchBar: React.FC<any> = props => {
+    const { t } = useTranslation();
 
     let placeholder;
 
     if (props.placeholder) {
         placeholder = props.placeholder;
     } else {
-        placeholder = t("searchbarPlaceholder");
+        placeholder = t('searchbarPlaceholder');
     }
 
-    const className = props.isHomepage ? "searchbar-homepage" : "searchbar-header"
+    const className = props.isHomepage
+        ? 'searchbar-homepage'
+        : 'searchbar-header';
 
     return (
         <React.Fragment>
@@ -30,8 +32,8 @@ const SearchBar: React.FC<any> = (props) => {
                 size={props.size}
             />
         </React.Fragment>
-    )
-}
+    );
+};
 
 // export default withRouter(SearchBar);
 export default SearchBar;

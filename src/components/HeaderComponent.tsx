@@ -1,12 +1,12 @@
-import React from "react";
-import { Layout, Button, Icon } from "antd";
+import React from 'react';
+import { Layout, Button, Icon } from 'antd';
 
-import { useTranslation } from "react-i18next";
-import { Link, useRouteMatch, match } from "react-router-dom";
-import AppConstants from "../AppConstants";
-import SearchBar from "./SearchBar";
+import { useTranslation } from 'react-i18next';
+import { Link, useRouteMatch, match } from 'react-router-dom';
+import AppConstants from '../AppConstants';
+import SearchBar from './SearchBar';
 
-import "./HeaderComponent.less";
+import './HeaderComponent.less';
 
 const { Header } = Layout;
 
@@ -18,7 +18,7 @@ const { Header } = Layout;
 // TODO - change prop args
 const HeaderComponent: React.FC<any> = props => {
     const { t } = useTranslation();
-    const match: match | null = useRouteMatch("/");
+    const match: match | null = useRouteMatch('/');
 
     let searchbar = null;
 
@@ -28,7 +28,12 @@ const HeaderComponent: React.FC<any> = props => {
     if (match && !match.isExact) {
         searchbar = (
             <div>
-                <Button className="toggle" ghost size="small" onClick={props.onToggle}>
+                <Button
+                    className="toggle"
+                    ghost
+                    size="small"
+                    onClick={props.onToggle}
+                >
                     <Icon type="swap" />
                 </Button>
                 <SearchBar
@@ -54,7 +59,7 @@ const HeaderComponent: React.FC<any> = props => {
                 <ul>
                     <li>
                         <Link data-testid="header-about" to="/about">
-                            {t("about")}
+                            {t('about')}
                         </Link>
                     </li>
                 </ul>
@@ -68,7 +73,7 @@ const HeaderComponent: React.FC<any> = props => {
                 className="languageUIToggle"
                 onClick={props.handleChangeLanguage}
             >
-                {t("languageToggle")}
+                {t('languageToggle')}
             </Button>
         </Header>
     );

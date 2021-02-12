@@ -1,15 +1,14 @@
-import React, {useState, useEffect} from 'react';
-import {Route, Switch, useHistory} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route, Switch, useHistory } from 'react-router-dom';
 // import logo from './logo.svg';
 import HeaderComponent from './components/HeaderComponent';
-import {Layout} from 'antd';
+import { Layout } from 'antd';
 import MainHomepage from './components/MainHomepage';
 import FooterComponent from './components/FooterComponent';
 import About from './components/About';
 import Entry from './components/Entry';
 
-import {I18nextProvider, useTranslation} from 'react-i18next';
-import i18next from 'i18next';
+import { useTranslation } from 'react-i18next';
 
 import AppConstants from './AppConstants';
 
@@ -18,74 +17,88 @@ import './App.less';
 
 // TODO - styling remove .cit with #{word_id} and children "&nbsp"?
 
-const {Content} = Layout;
+const { Content } = Layout;
 
 const App: React.FC<any> = () => {
-  const {t, i18n} = useTranslation();
+    const { t, i18n } = useTranslation();
 
-  const history = useHistory();
-  
-  const [dictCode, setDictCode] = useState<string>(AppConstants.DictCode.EF); // To be sent to and used by API.
-  const [isEnglishFrenchDict, setIsEnglishFrenchDict] = useState<boolean>(true); // by default, set to English-French dictionary
+    const history = useHistory();
 
-  const handleClickSearch = (word: string | null) => {
-    if (word === null || word.trim() === "") {
-      console.log("no word");
-    } else {
-      history.push(`/search/${dictCode}/${word}`);
-    }
-  }
+    const [dictCode, setDictCode] = useState<string>(AppConstants.DictCode.EF); // To be sent to and used by API.
+    const [isEnglishFrenchDict, setIsEnglishFrenchDict] = useState<boolean>(
+        true
+    ); // by default, set to English-French dictionary
 
-  const handleClickToggle = () => {
-    if (dictCode === AppConstants.DictCode.EF) {
-      setDictCode(AppConstants.DictCode.FE)
-    } else {
-      setDictCode(AppConstants.DictCode.EF);
-    }
-    setIsEnglishFrenchDict(!isEnglishFrenchDict);
-  }
+    const handleClickSearch = (word: string | null) => {
+        if (word === null || word.trim() === '') {
+            console.log('no word');
+        } else {
+            history.push(`/search/${dictCode}/${word}`);
+        }
+    };
 
-  const toggleText: string = isEnglishFrenchDict ? t('toggleLabel_en-fr') : t('toggleLabel_fr-en');
+    const handleClickToggle = () => {
+        if (dictCode === AppConstants.DictCode.EF) {
+            setDictCode(AppConstants.DictCode.FE);
+        } else {
+            setDictCode(AppConstants.DictCode.EF);
+        }
+        setIsEnglishFrenchDict(!isEnglishFrenchDict);
+    };
 
-  const handleChangeLanguage = () => {
-    if (i18n.language === 'en') {
-      i18n.changeLanguage('fr');
-    } else {
-      i18n.changeLanguage('en');
-    }
-  }
+    const toggleText: string = isEnglishFrenchDict
+        ? t('toggleLabel_en-fr')
+        : t('toggleLabel_fr-en');
 
-  // This is to fix forward and back browser button navigation.
-  window.onpopstate = () => {
-    window.location.reload();
-  }
-  
+    const handleChangeLanguage = () => {
+        if (i18n.language === 'en') {
+            i18n.changeLanguage('fr');
+        } else {
+            i18n.changeLanguage('en');
+        }
+    };
 
-  /* TODO
+    /* TODO
     Note that antd's ConfigProvider has locale support with it's own translated placeholders. Note that these can usually still be replaced via placeholder prop.
     This depends on the component. For now, let's use i18next! After implementing all translations, we can use ConfigProvider <div className=""></div>
 
     OR we use i18next provider if load language based on local storage (future concept)
   */
 
+    // SEE HERE: https://fettblog.eu/typescript-react/components/
+    // SEE HERE TOO: https://www.robinwieruch.de/react-function-component
 
-  // SEE HERE: https://fettblog.eu/typescript-react/components/
-  // SEE HERE TOO: https://www.robinwieruch.de/react-function-component
-
-
-  return (
-    <div className="App">
-      <HeaderComponent handleChangeLanguage={handleChangeLanguage} toggleText={toggleText} onToggle={handleClickToggle} onSearch={handleClickSearch}/>
-        <Content className="main" data-testid="main">
-          <Switch>
-            <Route path="/" exact render={() => <MainHomepage handleClickToggle={handleClickToggle} toggleText={toggleText} handleClickSearch={handleClickSearch}/>} />
-            <Route path="/about" exact component={About} />
-            <Route path="/search/:dictCode/:entryId" component={Entry} />
-          </Switch>
-        </Content>
-      <FooterComponent/>
-    </div>
-  );
-}
+    return (
+        <div className="App">
+            <HeaderComponent
+                handleChangeLanguage={handleChangeLanguage}
+                toggleText={toggleText}
+                onToggle={handleClickToggle}
+                onSearch={handleClickSearch}
+            />
+            <Content className="main" data-testid="main">
+                <Switch>
+                    <Route
+                        path="/"
+                        exact
+                        render={() => (
+                            <MainHomepage
+                                handleClickToggle={handleClickToggle}
+                                toggleText={toggleText}
+                                handleClickSearch={handleClickSearch}
+                            />
+                        )}
+                    />
+                    <Route path="/about" exact component={About} />
+                    <Route
+                        path="/search/:dictCode/:entryId"
+                        component={Entry}
+                    />
+                </Switch>
+            </Content>
+            <FooterComponent />
+        </div>
+    );
+};
 
 export default App;

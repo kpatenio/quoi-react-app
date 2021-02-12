@@ -183,11 +183,13 @@ exports[`App initial render should render App and match snapshots 1`] = `
       >
          
         footer
-        : 
+        :
+         
         <span
           id="api-copyright"
         >
-          www.Collinsdictionary.com © HarperCollins Publishers Ltd 2014 
+          www.Collinsdictionary.com © HarperCollins Publishers Ltd 2014
+           
         </span>
       </p>
     </div>

@@ -3,7 +3,8 @@
 @import '~antd/es/style/themes/default.less';
 
 // import Google fonts as CSS; see https://stackoverflow.com/questions/22877017/how-to-use-google-font-in-less-css-any-other-solution-to-embedded-custom-font
-@import (css) url('https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap');
+@import (css)
+    url('https://fonts.googleapis.com/css?family=Berkshire+Swash&display=swap');
 
 @media only screen and (max-width: 700px) {
     .searchContainer {
@@ -12,53 +13,54 @@
             // width: 100%;
         }
     }
-  }
+}
 
-    // TODO - do more research on screen size
-    .titleHeader {
-        position: relative;
-        margin-top: 1.2em;
-        text-align: center;
-        #title {
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            // text-transform:  uppercase; // only enable if we want to change the overall app logo
-            font-size: 4em;
-            margin: 0;
-            font-family: 'Berkshire Swash';
-        }
-        #slogan {
-            font-style: italic;
-            font-size: 1.4em;
-            font-weight: normal;
-            margin-bottom: 1.2em;
-        }
+// TODO - do more research on screen size
+.titleHeader {
+    position: relative;
+    margin-top: 1.2em;
+    text-align: center;
+    #title {
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        // text-transform:  uppercase; // only enable if we want to change the overall app logo
+        font-size: 4em;
+        margin: 0;
+        font-family: 'Berkshire Swash';
     }
-    .searchContainer { // https://flexboxfroggy.com/
+    #slogan {
+        font-style: italic;
+        font-size: 1.4em;
+        font-weight: normal;
+        margin-bottom: 1.2em;
+    }
+}
+.searchContainer {
+    // https://flexboxfroggy.com/
+    display: flex;
+    width: 100%;
+    justify-content: center;
+
+    .searchbarContainer {
         display: flex;
-        width: 100%;
-        justify-content: center;
-        
-        .searchbarContainer {
-            display: flex;
-            width: 50%;
-            flex-direction: column;
+        width: 50%;
+        flex-direction: column;
 
-            .dictionaryToggle {
-                // width: 180px;
-                // width: 25%;
-                align-self: flex-start;
-                background-color: @geekblue-7;
-    
-                &:focus, &:hover {
-                    background-color: @blue-7;
-                    // border-width: 2px;
-                    border-color: @blue-7;
-                }
-    
-            }
-            &.searchbar {
-                width: 100%;
+        .dictionaryToggle {
+            // width: 180px;
+            // width: 25%;
+            align-self: flex-start;
+            background-color: @geekblue-7;
+
+            &:focus,
+            &:hover {
+                background-color: @blue-7;
+                // border-width: 2px;
+                border-color: @blue-7;
             }
         }
+        &.searchbar {
+            width: 100%;
+        }
     }
+}

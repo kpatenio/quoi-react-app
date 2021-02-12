@@ -1,19 +1,19 @@
 import React from 'react';
-import {Layout, Icon} from "antd";
+import { Layout, Icon } from 'antd';
 
-import {I18nextProvider, useTranslation, Trans} from 'react-i18next';
+import { I18nextProvider, useTranslation, Trans } from 'react-i18next';
 import i18next from 'i18next';
 
 import './FooterComponent.less';
 
-const {Footer} = Layout;
+const { Footer } = Layout;
 
 const FooterComponent: React.FC = () => {
-    const {t} = useTranslation();  
+    const { t } = useTranslation();
     return (
         <Footer className="footer" data-testid="footer">
             <div className="github">
-                <Icon type="github" className="github-logo"/>
+                <Icon type="github" className="github-logo" />
                 {/* Info about anchor tag and its attributes: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a */}
                 <a
                     id="github-profile"
@@ -24,11 +24,20 @@ const FooterComponent: React.FC = () => {
                     kpatenio
                 </a>
             </div>
-            <div className="api-footer"> {/* TODO - translate this */}
-                <p id="api-message"> {t('footer')}: <span id="api-copyright">www.Collinsdictionary.com © HarperCollins Publishers Ltd 2014 </span></p>
+            <div className="api-footer">
+                {' '}
+                {/* TODO - translate this */}
+                <p id="api-message">
+                    {' '}
+                    {t('footer')}:{' '}
+                    <span id="api-copyright">
+                        www.Collinsdictionary.com © HarperCollins Publishers Ltd
+                        2014{' '}
+                    </span>
+                </p>
             </div>
         </Footer>
-    )
-}
+    );
+};
 
 export default FooterComponent;
